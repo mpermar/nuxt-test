@@ -1,6 +1,6 @@
 # syntax = docker/dockerfile:1
 
-ARG NODE_VERSION=20.18.0
+ARG NODE_VERSION=22.12.0
 
 FROM bitnami/node:${NODE_VERSION} as base
 
@@ -19,7 +19,7 @@ COPY --link . .
 RUN npm run build
 
 # Run
-FROM us-east1-docker.pkg.dev/vmw-app-catalog/hosted-registry-761e85bef74/containers/photon-5/node-min:22.12.0-photon-5-r0 
+FROM gcr.io/bitnami-labs/node-min:22.12.0-photon-5-r1
 
 ENV PORT=$PORT
 ENV NODE_ENV=production
