@@ -19,7 +19,7 @@ COPY --link . .
 RUN npm run build
 
 # Run
-#FROM bitnami/node:${NODE_VERSION} as base
+#FROM bitnami/node:${NODE_VERSION} 
 #FROM node:${NODE_VERSION}-slim as base
 FROM gcr.io/bitnami-labs/node-min:${NODE_VERSION}-photon-5-r1
 
@@ -30,4 +30,4 @@ COPY --from=build /src/.output /src/.output
 # Optional, only needed if you rely on unbundled dependencies
 COPY --from=build /src/node_modules /src/node_modules
 
-CMD [ "node", "/src/.output/server/index.mjs" ]
+CMD [ "/src/.output/server/index.mjs" ]
